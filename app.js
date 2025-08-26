@@ -92,12 +92,32 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+
+
 app.use((req,res,next)=>{
   res.locals.currUser= req.user;
   res.locals.success=req.flash("success");
   res.locals.error = req.flash("error");
   next();
 });
+
+app.get("/", (req, res) => {
+  req.flash("success", "Welcome to the homepage!");
+  res.render("index");
+});
+
+app.get("/error", (req, res) => {
+  req.flash("error", "Something went wrong!");
+  res.render("error");
+});
+
+// Example login route (with passport.js or custom authentication)
+app.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+  failureFlash: true
+}));
 
 // app.get("/demouser",async(req,res)=>{
 //   let fakeUser= new User({
@@ -131,67 +151,28 @@ app.listen(8080,()=>{
 
 
 
-  // // SHOW ROUTE
-  // app.get("/listings/:id",wrapAsync(async(req,res)=>{
-  //   let {id}=req.params;
-  //   const listing = await Listing.findById(id).populate("reviews");
-  //   res.render("listings/show.ejs",{listing});
-  // }))
+  
 
 
   
 
-  //REVIEWS 
-  // POST ROUTE
-  // app.post("/listings/:id/reviews", async (req,res)=>{
-  //  let listing = await Listing.findById(req.params.id);
-  //  let newReview = new Review(req.body.review);
-
-  //  listing.reviews.push(newReview);
-
-  //  await newReview.save();
-  //  await listing.save();
-
-  //  console.log("new review saved");
-  //  res.send("new review saved");
-
-  // });
+  
 
   
 
   
 
 
-//DELETE REVIEW ROUT
 
 
 
 
 
-// app.get("/testListing",async(req,res)=>{
-//    let sampleListing = new Listing({
-//     title:"My New Villa",
-//     description:"By the beach",
-//     price:1200,
-//     location:"Calangute , Goa",
-//     country:"India"
-//    });
-//   await sampleListing.save();
-//   console.log("sample was saved");
-//   res.send("successful testing");
-// });
 
 
 
-// app.use((err, req, res, next) => {
-//   let { statusCode = 500, message = "Something went wrong!" } = err;
-  
-//   if (res.headersSent) {
-//       return next(err); // Prevent setting headers again
-//   }
 
-//   res.status(statusCode).render("listings/error", { message });
-// });
+
 
 
 

@@ -1,3 +1,5 @@
+
+
 <style>
   .search-btn {
     background-color: #fe424d;
@@ -12,7 +14,6 @@
   .search-btn i {
     display: inline;
     margin-right: 0.5rem;
-
   }
   .search-inp {
     border-radius: 25px;
@@ -24,8 +25,8 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings">
-      <i class="fa-regular fa-compass"></i
-    ></a>
+      <i class="fa-regular fa-compass"></i>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -44,7 +45,6 @@
             class="form-control me-2 search-inp"
             type="search"
             placeholder="Search destinations"
-            
           />
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i> Search
@@ -53,18 +53,19 @@
       </div>
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
-        <% if (currUser) { %>
-        <!-- ✅ Now it only shows "Logout" when logged in -->
-        <a class="nav-link" href="/logout"><b>Log Out</b></a>
+
+        <% if (typeof currUser !== "undefined" && currUser) { %>
+          <a class="nav-link" href="/logout"><b>Log Out</b></a>
         <% } else { %>
-        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-        <a class="nav-link" href="/login"><b>Log In</b></a>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Log In</b></a>
         <% } %>
       </div>
     </div>
   </div>
 </nav>
 
+ 
 <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
