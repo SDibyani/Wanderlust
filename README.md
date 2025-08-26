@@ -6,7 +6,7 @@
 
 ##  Overview
 
-**Wanderlust** is a dynamic property listing web application built with the MERN stack (MongoDB, Express, React, Node.js). The app allows users to browse, search, and view property listings with a clean, engaging front-end interface.
+**Wanderlust** is a dynamic property listing web application built with the MERN stack (MongoDB, Express, Node.js). The app allows users to browse, search, and view property listings with a clean, engaging front-end interface.
 
 ---
 
